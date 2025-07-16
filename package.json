@@ -1,0 +1,36 @@
+{
+  "name": "playwright-api",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "cross-env NODE_ENV=development node server.js",
+    "test": "npx playwright test",
+    "test:docker": "node test-docker-setup.js",
+    "docker:build": "docker build -t playwright-api .",
+    "docker:run": "docker run -p 3000:3000 playwright-api",
+    "dev:watch": "cross-env NODE_ENV=development nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.10.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "playwright": "^1.54.1",
+    "uuid": "^11.1.0",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^20.19.8",
+    "cross-env": "^7.0.3",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.10",
+    "typescript": "^5.0.0"
+  }
+}

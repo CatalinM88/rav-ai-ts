@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  playwright-api:
+    build: .
+    ports:
+      - "3000:3000"
+      - "35555-35655:35555-35655"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DOCKER=true
+      - HOST_WS_IP=localhost
+    volumes:
+      - ./logs:/app/logs
+      - ./testdata:/app/testdata
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
